@@ -7,6 +7,7 @@ import NotFound from '@/views/NotFound.vue';
 import Edit from '@/views/Edit.vue';
 import UsersBlogs from '@/views/UsersBlogs.vue';
 import MyBlogs from '@/views/MyBlogs.vue';
+import Login from '@/views/Login.vue';
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ Vue.use(VueRouter);
       path:'/myblogs',
       name:'MyBlogs',
       component: MyBlogs
+    },
+    {
+      path:'/login',
+      name:'Login',
+      component: Login
     },
     {
       path: '*',
