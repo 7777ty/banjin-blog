@@ -2,7 +2,7 @@
     <div class="header">
         <h1>共享您的见闻</h1>
         <div class="miniTitle">精品博客汇聚</div>
-        <div class="buttons">
+        <div class="buttons" v-if="this.$route.fullPath==='/home'">
             <el-button>立即登录</el-button>
             <el-button>注册帐号</el-button>
         </div>

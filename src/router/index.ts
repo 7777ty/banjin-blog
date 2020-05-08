@@ -8,14 +8,19 @@ import Edit from '@/views/Edit.vue';
 import UsersBlogs from '@/views/UsersBlogs.vue';
 import MyBlogs from '@/views/MyBlogs.vue';
 import Login from '@/views/Login.vue';
+import SignUp from '@/views/SignUp.vue';
 
 Vue.use(VueRouter);
 
   const routes: Array<RouteConfig> = [
     {
       path:'/',
+      redirect:'/home'
+    },
+    {
+      path:'/home',
       name:'Home',
-      component:Home
+      component: Home
     },
     {
       path: '/details',
@@ -33,12 +38,12 @@ Vue.use(VueRouter);
       component: Edit
     },
     {
-      path:'/usersblogs',
+      path:'/users-blogs',
       name:'UsersBlogs',
       component: UsersBlogs
     },
     {
-      path:'/myblogs',
+      path:'/my-blogs',
       name:'MyBlogs',
       component: MyBlogs
     },
@@ -46,6 +51,11 @@ Vue.use(VueRouter);
       path:'/login',
       name:'Login',
       component: Login
+    },
+    {
+      path:'/sign-up',
+      name:'SignUp',
+      component: SignUp
     },
     {
       path: '*',

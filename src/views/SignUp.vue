@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="signUp">
         <Header1></Header1>
         <div class="username">
             <p>用户名</p>
@@ -11,7 +11,7 @@
             <el-input v-model="password" show-password maxlength="20" placeholder="密码" clearable></el-input>
         </div>
         <el-button>立即登录</el-button>
-        <div class="tips">没有账户？<router-link to="/sign-up" style="color:#009933 ">注册新用户</router-link></div>
+        <div class="tips">已有帐号？<router-link to="/login" style="color:#009933 ">立即登录</router-link></div>
         <Footer></Footer>
     </div>
 </template>
@@ -24,7 +24,7 @@
     @Component({
         components: {Footer, Header1}
     })
-    export default class Login extends Vue {
+    export default class SignUp extends Vue {
         username?: string='';
         password?: string='';
     }
@@ -46,4 +46,5 @@
     div >p{
         margin-bottom: 10px;
     }
+
 </style>
