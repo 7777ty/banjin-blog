@@ -3,8 +3,9 @@
         <h1>共享您的见闻</h1>
         <div class="miniTitle">精品博客汇聚</div>
         <div class="buttons" v-if="this.$route.fullPath==='/home'">
-            <el-button>立即登录</el-button>
-            <el-button>注册帐号</el-button>
+            <router-link to="/login"><el-button>立即登录</el-button></router-link>
+            <router-link to="/sign-up"><el-button>注册帐号</el-button></router-link>
+
         </div>
     </div>
 </template>
@@ -35,6 +36,7 @@
     }
     .el-button{
         margin-top: 70px;
+        margin-left: 30px;
         color:#009933;
     }
 </style>
