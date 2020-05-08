@@ -1,9 +1,10 @@
 <template>
     <div class="home">
-        <Header></Header>
+        <Header1></Header1>
         <div class="main">
             你好
         </div>
+
         <Footer></Footer>
     </div>
 </template>
@@ -11,10 +12,11 @@
 <script lang='ts'>
     import Vue from 'vue';
     import {Component} from 'vue-property-decorator';
-    import Header from '@/components/Header.vue';
+    import Header1 from '@/components/Header1.vue';
     import Footer from '@/components/Footer.vue';
+    import Header2 from '@/components/Header2.vue';
     @Component({
-        components: {Footer, Header}
+        components: {Header2, Footer, Header1}
     })
     export default class Index extends Vue {
 
