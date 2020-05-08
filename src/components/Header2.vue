@@ -2,7 +2,7 @@
     <div class="header">
             <h1>踢歪博客</h1>
             <div>
-                <span>编辑</span>
+                <span><i class="el-icon-edit"></i></span>
                 <span>头像</span>
             </div>
     </div>
@@ -29,5 +29,9 @@
         justify-content: space-between;
         padding: 0 40px;
     }
+    .el-icon-edit{
+        margin-right: 20px;
+    }
+
 
 </style>

@@ -3,6 +3,8 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Details from '@/views/Details.vue';
 import Create from '@/views/Create.vue';
+import NotFound from '@/views/NotFound.vue';
+import Edit from '@/views/Edit.vue';
 
 Vue.use(VueRouter);
 
@@ -21,7 +23,16 @@ Vue.use(VueRouter);
       path:'/create',
       name:'Create',
       component:Create
-    }
+    },
+    {
+      path:'/edit',
+      name:'Edit',
+      component: Edit
+    },
+    {
+      path: '*',
+      component: NotFound
+    },
   // {
   //   path: '/',
   //   name: 'Home',
