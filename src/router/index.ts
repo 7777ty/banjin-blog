@@ -5,6 +5,7 @@ import Details from '@/views/Details.vue';
 import Create from '@/views/Create.vue';
 import NotFound from '@/views/NotFound.vue';
 import Edit from '@/views/Edit.vue';
+import UsersBlogs from '@/views/UsersBlogs.vue';
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ Vue.use(VueRouter);
       path:'/edit',
       name:'Edit',
       component: Edit
+    },
+    {
+      path:'/usersblogs',
+      name:'usersBlogs',
+      component: UsersBlogs
     },
     {
       path: '*',
