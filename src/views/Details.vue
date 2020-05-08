@@ -9,7 +9,7 @@
                     <p>用户名 发布于3天前</p>
                 </div>
             </div>
-            <div class="usersContent">
+            <div class="usersContentWrapper">
                 <div>
                     内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
                 </div>
@@ -51,7 +51,7 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    .usersContent{
+    .usersContentWrapper{
         width: 70%;
         margin: 20px 50px;
     }

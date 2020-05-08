@@ -6,6 +6,7 @@ import Create from '@/views/Create.vue';
 import NotFound from '@/views/NotFound.vue';
 import Edit from '@/views/Edit.vue';
 import UsersBlogs from '@/views/UsersBlogs.vue';
+import MyBlogs from '@/views/MyBlogs.vue';
 
 Vue.use(VueRouter);
 
@@ -32,8 +33,13 @@ Vue.use(VueRouter);
     },
     {
       path:'/usersblogs',
-      name:'usersBlogs',
+      name:'UsersBlogs',
       component: UsersBlogs
+    },
+    {
+      path:'/myblogs',
+      name:'MyBlogs',
+      component: MyBlogs
     },
     {
       path: '*',

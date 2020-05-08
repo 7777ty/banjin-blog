@@ -19,6 +19,10 @@
                         <p>title</p>
                         <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
                     </div>
+                    <div class="edit">
+                        <span>编辑</span>
+                        <span>删除</span>
+                    </div>
                 </div>
 
             </div>
@@ -35,7 +39,7 @@
     @Component({
         components: {Footer, Header2}
     })
-    export default class UsersBlogs extends Vue {
+    export default class MyBlogs extends Vue {
 
     }
 </script>
@@ -70,5 +74,7 @@
         display: flex;
         flex-direction: column;
     }
-
+    .edit{
+        color: #009933;
+    }
 </style>
