@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import Details from '@/views/Details.vue';
+import Create from '@/views/Create.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ Vue.use(VueRouter);
       path: '/details',
       name:'Details',
       component:Details
+    },
+    {
+      path:'/create',
+      name:'Create',
+      component:Create
     }
   // {
   //   path: '/',
