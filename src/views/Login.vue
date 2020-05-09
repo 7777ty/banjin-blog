@@ -21,6 +21,7 @@
     import {Component} from 'vue-property-decorator';
     import Header1 from '@/components/Header1.vue';
     import Footer from '@/components/Footer.vue';
+
     @Component({
         components: {Footer, Header1}
     })
@@ -28,8 +29,8 @@
         username?: string='';
         password?: string='';
         toLogin(username: string,password: string ){
-            this.$store.dispatch('login',{username,password}).then(()=>{
-                this.$router.push('/my-blogs');
+            this.$store.dispatch('login',{username,password}).then((res)=>{
+                this.$router.push('this.$route.query.redirect'||'/');
             });
         }
     }
