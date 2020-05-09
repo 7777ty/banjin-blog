@@ -22,7 +22,6 @@
     import {Component} from 'vue-property-decorator';
     import Header1 from '@/components/Header1.vue';
     import Footer from '@/components/Footer.vue';
-    import auth from '@/api/auth';
 
     @Component({
         components: {Footer, Header1}
@@ -31,8 +30,8 @@
         username?: string='';
         password?: string='';
         toSignUp(username: string,password: string){
-            auth.signUp({username,password}).then(()=>{
-                this.$router.push('/login')
+            this.$store.dispatch('signUp',{username,password}).then(()=>{
+                this.$router.push('login')
             });
         }
     }
