@@ -3,7 +3,13 @@
             <h1>踢歪博客</h1>
             <div class="userWrapper">
                 <router-link to="/edit"><i class="el-icon-edit"></i></router-link>
-                <span><img :alt="$store.state.user.username" class="avatar" :src="$store.state.user.avatar"></span>
+                <div class="user">
+                    <img class="avatar" :src="$store.state.user.avatar" :alt="$store.state.user.username" :title="$store.state.user.username">
+                    <ul>
+                        <li><router-link to="/my-blogs">我的</router-link></li>
+                        <li><a href="#" @click="onLogout">注销</a></li>
+                    </ul>
+                </div>
             </div>
     </div>
 </template>
@@ -14,7 +20,10 @@
 
     @Component
     export default class Header2 extends Vue {
-
+        onLogout(){
+            this.$store.dispatch('logout');
+            this.$router.push('/');
+        }
     }
 </script>
 
@@ -44,5 +53,35 @@
         border-radius: 50%;
         margin-left: 15px;
     }
+    .user {
+        position: relative;
 
+        ul {
+            display: none;
+            position: absolute;
+            right: 0;
+            list-style: none;
+            border: 1px solid #eaeaea;
+            margin:0;
+            padding: 0;
+            background-color: #fff;
+
+            a {
+                text-decoration: none;
+                color: #333;
+                font-size: 12px;
+                display: block;
+                padding: 5px 10px;
+
+                &:hover {
+                    background-color: #eaeaea;
+                }
+            }
+
+        }
+
+        &:hover ul {
+            display: block;
+        }
+    }
 </style>
