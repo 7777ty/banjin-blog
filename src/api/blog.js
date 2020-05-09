@@ -28,7 +28,7 @@ export default {
     deleteBlog({ blogId }) {
         return request(URL.DELETE.replace(':blogId', blogId), 'DELETE')
     },
-    createBlog({ title = '', content = '', description = '', atIndex = false} = { title: '', content: '', description: '', atIndex: false}) {
+    createBlog({ title = '', content = '', description = '', atIndex} = { title: '', content: '', description: '', atIndex: false}) {
         return request(URL.CREATE, 'POST', { title, content, description, atIndex })
     }
 }

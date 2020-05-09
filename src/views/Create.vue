@@ -15,8 +15,12 @@
                 <p>文章内容</p>
                 <el-input rows="12" resize="none" type="textarea" v-model="articleContent" placeholder="请输入文章内容"/>
             </div>
+            <div>
+                <label>是否展示到首页</label>
+                <el-switch v-model="atIndex" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+            </div>
             <div class="buttons">
-                <el-button type="success">立即创建</el-button>
+                <el-button @click="onCreate" type="success">立即创建</el-button>
                 <el-button type="danger"> 取消创建</el-button>
             </div>
 
@@ -31,13 +35,21 @@
     import {Component} from 'vue-property-decorator';
     import Header2 from '@/components/Header2.vue';
     import Footer from '@/components/Footer.vue';
+    import blog from '@/api/blog';
     @Component({
         components: {Footer, Header2}
     })
     export default class Create extends Vue {
-        articleTitle?: string='';
-        articleIntroduction?: string='';
-        articleContent?: string='';
+        articleTitle='';
+        articleIntroduction='';
+        articleContent='';
+        atIndex = false as boolean;
+        onCreate(){
+            blog.createBlog({title:this.articleTitle,description:this.articleIntroduction,content:this.articleContent,atIndex:this.atIndex}).then(res=>{
+                this.$message.success(res.msg);
+                this.$router.push(`/details/${res.data.id}`)
+            })
+        }
     }
 </script>
 

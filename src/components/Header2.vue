@@ -1,8 +1,8 @@
 <template>
     <div class="header">
-            <h1>踢歪博客</h1>
+            <router-link to="/"><h1>踢歪博客</h1></router-link>
             <div class="userWrapper">
-                <router-link to="/edit"><i class="el-icon-edit"></i></router-link>
+                <router-link to="/create"><i class="el-icon-edit"></i></router-link>
                 <div class="user">
                     <img class="avatar" :src="$store.state.user.avatar" :alt="$store.state.user.username" :title="$store.state.user.username">
                     <ul>
