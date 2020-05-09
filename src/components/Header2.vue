@@ -1,9 +1,9 @@
 <template>
     <div class="header">
             <h1>踢歪博客</h1>
-            <div>
-                <span><i class="el-icon-edit"></i></span>
-                <span>头像</span>
+            <div class="userWrapper">
+                <router-link to="/edit"><i class="el-icon-edit"></i></router-link>
+                <span><img :alt="$store.state.user.username" class="avatar" :src="$store.state.user.avatar"></span>
             </div>
     </div>
 </template>
@@ -31,7 +31,18 @@
     }
     .el-icon-edit{
         margin-right: 20px;
+        font-size: 30px;
     }
-
+    .userWrapper{
+        display: flex;
+        align-items: center;
+    }
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        margin-left: 15px;
+    }
 
 </style>
