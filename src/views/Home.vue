@@ -1,6 +1,7 @@
 <template>
     <div class="home">
-        <Header1></Header1>
+        <Header2 v-if="this.$store.state.isLogin"></Header2>
+        <Header1 v-else></Header1>
         <div class="main">
             你好
         </div>
