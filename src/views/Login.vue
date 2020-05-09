@@ -10,7 +10,7 @@
             <p>密码</p>
             <el-input v-model="password" show-password maxlength="20" placeholder="密码" clearable></el-input>
         </div>
-        <el-button>立即登录</el-button>
+        <el-button @click="toLogin(username,password)">立即登录</el-button>
         <div class="tips">没有账户？<router-link to="/sign-up" style="color:#009933 ">注册新用户</router-link></div>
         <Footer></Footer>
     </div>
@@ -21,12 +21,19 @@
     import {Component} from 'vue-property-decorator';
     import Header1 from '@/components/Header1.vue';
     import Footer from '@/components/Footer.vue';
+    import auth from '@/api/auth';
+
     @Component({
         components: {Footer, Header1}
     })
     export default class Login extends Vue {
         username?: string='';
         password?: string='';
+        toLogin(username: string,password: string ){
+            auth.login({username,password}).then(()=>{
+                this.$router.push('/my-blogs');
+            })
+        }
     }
 </script>
 
