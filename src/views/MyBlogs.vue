@@ -78,7 +78,6 @@
                 type: 'warning'
             })
             await blog.deleteBlog({blogId:id});
-            await this.$router.replace({path:'/my-blogs/my-blogs-back'});
             this.$message.success('删除成功');
             this.blogs = this.blogs.filter(blog => blog.id != id);
 

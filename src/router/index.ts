@@ -58,11 +58,6 @@ function loadView(view: string) {
       meta:{requiresAuth:true}
     },
     {
-      path:'/my-blogs/my-blogs-back',
-      component: loadView('MyBlogsBack'),
-      meta:{requiresAuth:true}
-    },
-    {
       path:'/login',
       name:'Login',
       component: loadView('Login')
