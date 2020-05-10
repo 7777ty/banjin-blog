@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-            <router-link to="/"><h1>踢歪博客</h1></router-link>
+            <router-link to="/"><h1>板筋博客</h1></router-link>
             <div class="userWrapper">
                 <router-link to="/create"><i class="el-icon-edit"></i></router-link>
                 <div class="user">
