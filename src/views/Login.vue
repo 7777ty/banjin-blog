@@ -8,7 +8,7 @@
         </div>
         <div class="password">
             <p>密码</p>
-            <el-input v-model="password" show-password maxlength="20" placeholder="密码" clearable></el-input>
+            <el-input v-model="password" show-password maxlength="20" placeholder="密码" clearable ></el-input>
         </div>
         <el-button @click="toLogin(username,password)">立即登录</el-button>
         <div class="tips">没有账户？<router-link to="/sign-up" style="color:#009933 ">注册新用户</router-link></div>
@@ -30,8 +30,7 @@
         password?: string='';
         toLogin(username: string,password: string ){
             this.$store.dispatch('login',{username,password}).then(()=>{
-                const path=this.$route.query.redirect || '/';
-                this.$router.push({path:path});
+                this.$router.push('/');
             });
         }
     }
