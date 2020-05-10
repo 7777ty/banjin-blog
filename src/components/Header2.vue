@@ -24,6 +24,9 @@
             this.$store.dispatch('logout');
             this.$router.push('/');
         }
+        created(){
+            this.$store.dispatch('checkLogin')
+        }
     }
 </script>
 

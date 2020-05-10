@@ -3,9 +3,9 @@ import request from "@/helper/request";
 
 const  URL={
     GET_LIST:'/blog',
-    GET_DETAIL:'/blog/blogId',
+    GET_DETAIL:'/blog/:blogId',
     CREATE:'/blog',
-    UPDATE:'/blog:blogId',
+    UPDATE:'/blog/:blogId',
     DELETE:'/blog/:blogId'
 };
 
@@ -19,7 +19,7 @@ export default {
     getBlogsByUserId(userId,{page=1,atIndex}={page:1}){
         return this.getBlogs({userId,page,atIndex})
     },
-    getDetail({blogId}){
+    getDetail(blogId){
         return request(URL.GET_DETAIL.replace(':blogId',blogId));
     },
     updateBlog({blogId},{title,content,description,atIndex}){

@@ -3,15 +3,16 @@
         <Header2></Header2>
         <div class="users">
             <div class="usersTitle">
-                <span>头像</span>
+                <img class="avatar" alt="用户头像" :src="$store.state.user.avatar"  >
                 <div class="title">
-                    <p>title</p>
-                    <p>用户名 发布于3天前</p>
+                    <p>{{blogDetails.title}}</p>
+                    <p v-if="blogDetails.createAt===blogDetails.updatedAt">用户名 发布于{{blogDetails.createAt}}</p>
+                    <p v-else>用户更新于{{blogDetails.updatedAt}}</p>
                 </div>
             </div>
             <div class="usersContentWrapper">
                 <div>
-                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    {{blogDetails.description}}
                 </div>
             </div>
         </div>
@@ -25,11 +26,30 @@
     import {Component} from 'vue-property-decorator';
     import Footer from '@/components/Footer.vue';
     import Header2 from '@/components/Header2.vue';
+    import blog from '@/api/blog';
+
+
     @Component({
         components: {Header2, Footer, }
     })
     export default class Details extends Vue {
+        blogDetails={
+            content:'',
+            description: '',
+            title: '',
+            createAt: Date,
+            updatedAt: Date,
+        };
 
+        created(){
+            blog.getDetail(this.$route.params.blogId).then(res=>{
+                [this.blogDetails]=[res.data];
+                console.log(this.blogDetails);
+                console.log(res.data);
+            });
+            this.$store.dispatch('checkLogin')
+
+        }
     }
 </script>
 

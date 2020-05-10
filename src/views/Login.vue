@@ -29,8 +29,8 @@
         username?: string='';
         password?: string='';
         toLogin(username: string,password: string ){
-            this.$store.dispatch('login',{username,password}).then((res)=>{
-                this.$router.push('this.$route.query.redirect'||'/');
+            this.$store.dispatch('login',{username,password}).then(()=>{
+                this.$router.push({path:this.$route.query.redirect || '/'});
             });
         }
     }
