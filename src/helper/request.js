@@ -19,12 +19,11 @@ export default function request(url,type='GET',data={}) {
         axios(option).then(res=>{
             if(res.data.status==='ok'){
                 resolve(res.data);
-
             }else{
                 Message.error(res.data.msg);
                 reject(res.data);
             }
-        }).catch(err=>{
+        }).catch(()=>{
             Message.error('网络异常');
             reject({msg:'网络异常'})
         })
