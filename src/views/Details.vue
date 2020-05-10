@@ -6,7 +6,7 @@
                 <div class="usersTitle">
                     <img class="avatar" alt="用户头像" :src="user.avatar"  >
                     <div class="title">
-                        <p>{{blogDetails.title}}</p>
+                        <h3>{{blogDetails.title}}</h3>
                         <p v-if="blogDetails.createAt===blogDetails.updatedAt" class="updateAt">
                             <router-link class="userLink" :to="`/users-blogs/${user.id}`">{{user.username}}</router-link> 发布于{{friendlyDate(blogDetails.createAt)}}
                         </p>
@@ -33,12 +33,13 @@
     import Footer from '@/components/Footer.vue';
     import Header2 from '@/components/Header2.vue';
     import blog from '@/api/blog';
-    import  marked from 'marked';
-
+    import marked from 'marked';
     @Component({
         components: {Header2, Footer, }
     })
+
     export default class Details extends Vue {
+
         user={
             avatar:'',
             username:'',
@@ -63,13 +64,15 @@
 
         }
         get markDown(){
-            return marked(this.blogDetails.content)
+          console.log(this.blogDetails.content);
+          return marked(this.blogDetails.content)
         }
     }
 </script>
 
 <style lang='scss' scoped>
     @import "~@/assets/styles/base.scss";
+
     .details{
         min-height: 500px;
     }
@@ -114,8 +117,10 @@
         width: 70%;
         margin:auto ;
         text-align: left;
+        line-height: 40px;
 
     }
+
     .userLink{
         color: $bgColor;
         margin-right: 2px;
