@@ -4,7 +4,7 @@
             <div class="userWrapper">
                 <router-link to="/create"><i class="el-icon-edit"></i></router-link>
                 <div class="user">
-                    <img class="avatar" :src="$store.state.user.avatar" :alt="$store.state.user.username" :title="$store.state.user.username">
+                    <img class="avatar" :src="this.avatar" :alt="this.title" :title="this.username">
                     <ul>
                         <li><router-link to="/my-blogs">我的</router-link></li>
                         <li><a href="#" @click="onLogout">注销</a></li>
@@ -17,14 +17,23 @@
 <script lang='ts'>
     import Vue from 'vue';
     import {Component} from 'vue-property-decorator';
+    import auth from '@/api/auth';
 
     @Component
     export default class Header2 extends Vue {
+        avatar='';
+        title='';
+        username='';
         onLogout(){
             this.$store.dispatch('logout');
-            this.$router.push('/');
+            this.$router.push('/login')
         }
         created(){
+            auth.getInfo().then(res=>{
+                this.avatar=res.data.avatar;
+                this.title=res.data.title;
+                this.username=res.data.username
+            });
             this.$store.dispatch('checkLogin')
         }
     }

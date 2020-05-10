@@ -30,7 +30,8 @@
         password?: string='';
         toLogin(username: string,password: string ){
             this.$store.dispatch('login',{username,password}).then(()=>{
-                this.$router.push({path:this.$route.query.redirect || '/'});
+                const path=this.$route.query.redirect || '/';
+                this.$router.push({path:path});
             });
         }
     }

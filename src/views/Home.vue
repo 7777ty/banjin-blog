@@ -48,7 +48,7 @@
         total=0;
         page=1 as number;
 
-        onPageChange(newPage) {
+        onPageChange(newPage: number) {
             blog.getIndexBlogs({ page: newPage }).then(res => {
                 this.blogs = res.data;
                 this.total = res.total;
@@ -62,12 +62,10 @@
                 this.isLogin=res;
             });
             this.page =parseInt((this.$route.query.page)as string) ||1;
-            blog.getIndexBlogs({page:this.page}).then(res=>{
+            blog.getIndexBlogs({page:this.page}).then(res =>{
                 this.blogs=res.data;
                 this.total=res.total;
                 this.page=res.page;
-                console.log(this.blogs);
-                console.log(res.data);
             })
         }
     }
