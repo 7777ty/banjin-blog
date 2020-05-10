@@ -50,7 +50,6 @@
 
         onPageChange(newPage: string) {
             blog.getIndexBlogs({ page: parseInt(newPage )}).then((res: any ) => {
-
                 this.blogs = res.data;
                 this.total = res.total;
                 this.page = res.page;

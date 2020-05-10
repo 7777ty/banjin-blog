@@ -3,26 +3,33 @@
         <Header2></Header2>
         <div class="user-info">
             <div class="usersTitle">
-                <span>头像</span>
+                <span><img :alt="user.id" :src="user.avatar"></span>
                 <div class="title">
-                    <p>用户名</p>
+                    <p>{{user.username}}</p>
                 </div>
             </div>
-            <div class="usersContentWrapper">
+            <router-link :to="`/details/${blog.id}`" class="usersContentWrapper" v-for="blog in blogs" :key="blog.content">
                 <div class="date">
-                    <span>20</span>
-                    <span>5月</span>
-                    <span>2018</span>
+                    <span class="day">{{splitDate(blog.updatedAt).date}}</span>
+                    <span class="month">{{splitDate(blog.updatedAt).month+'月'}}</span>
+                    <span class="year">{{splitDate(blog.updatedAt).year}}</span>
                 </div>
                 <div class="usersContent">
                     <div>
-                        <p>title</p>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                        <p class="blogTitle">{{blog.title}}</p>
+                        <p>{{blog.description}}</p>
                     </div>
                 </div>
-
-            </div>
+            </router-link>
         </div>
+        <section class="pagination">
+            <el-pagination
+                    layout="prev, pager, next"
+                    :total="total"
+                    :current-page="page"
+                    @current-change="onPageChange">
+            </el-pagination>
+        </section>
         <Footer></Footer>
     </div>
 </template>
@@ -32,15 +39,62 @@
     import {Component} from 'vue-property-decorator';
     import Header2 from '@/components/Header2.vue';
     import Footer from '@/components/Footer.vue';
+    import blog from '@/api/blog';
     @Component({
         components: {Footer, Header2}
     })
     export default class UsersBlogs extends Vue {
+        blogs=[{
+            content:'',
+            description: '',
+            title: '',
+            createdAt: '',
+            updatedAt: '',
+            id:-1,
+        }];
+        user={};
+        total=0;
+        page=1 as number;
+        isLogin=false;
+
+
+        splitDate(dataStr){
+            const dateObj = typeof dataStr === 'object' ? dataStr : new Date(dataStr);
+            return {
+                date: dateObj.getDate(),
+                month: dateObj.getMonth() + 1,
+                year: dateObj.getFullYear()
+            }
+        }
+
+        onPageChange(newPage: string) {
+            blog.getBlogsByUserId(this.$route.params.userId,{page:newPage}).then(res=>{
+                this.blogs = res.data;
+                this.total = res.total;
+                this.page = res.page;
+                this.$router.push({path:`/users-blogs/${this.user.id}`,query:{page:newPage}})
+            })
+        }
+
+        created(){
+            this.page =parseInt((this.$route.query.page)as string) ||1;
+            this.$store.dispatch('checkLogin').then(res=>{
+                this.isLogin=res;
+            });
+
+            blog.getBlogsByUserId(this.$route.params.userId).then(res=>{
+                this.blogs=res.data;
+                this.total=res.total;
+                this.page=res.page;
+                this.user=res.data[0].user;
+            });
+        }
 
     }
 </script>
 
 <style lang='scss' scoped>
+    @import "~@/assets/styles/base.scss";
     .user-info{
         min-height: 500px;
         display: flex;
@@ -69,6 +123,24 @@
         margin-right: 18px;
         display: flex;
         flex-direction: column;
+        span{
+            color: $textLighterColor;
+            font-size: 14px;
+        }
+        .day{
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
     }
-
+    img{
+        margin-right: 20px;
+    }
+    .blogTitle{
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .pagination{
+        margin-bottom: 30px;
+    }
 </style>

@@ -4,13 +4,16 @@
         <div class="details">
             <section class="user-info">
                 <div class="usersTitle">
-                    <img class="avatar" alt="用户头像" :src="avatar"  >
+                    <img class="avatar" alt="用户头像" :src="user.avatar"  >
                     <div class="title">
                         <p>{{blogDetails.title}}</p>
-                        <p v-if="blogDetails.createAt===blogDetails.updatedAt" class="updateAt">用户名 发布于{{friendlyDate(blogDetails.createAt)}}</p>
-                        <p v-else class="updateAt">用户更新于{{friendlyDate(blogDetails.updatedAt)}}</p>
+                        <p v-if="blogDetails.createAt===blogDetails.updatedAt" class="updateAt">
+                            <router-link class="userLink" :to="`/users-blogs/${user.id}`">{{user.username}}</router-link> 发布于{{friendlyDate(blogDetails.createAt)}}
+                        </p>
+                        <p v-else class="updateAt">
+                            <router-link class="userLink" :to="`/users-blogs/${user.id}`">{{user.username}}</router-link>更新于{{friendlyDate(blogDetails.updatedAt)}}
+                        </p>
                     </div>
-
                 </div>
                 <div class="description">
                     {{blogDetails.description}}
@@ -36,7 +39,13 @@
         components: {Header2, Footer, }
     })
     export default class Details extends Vue {
-        avatar='';
+        user={
+            avatar:'',
+            username:'',
+            id:-1
+        };
+
+
         blogDetails={
             content:'',
             description: '',
@@ -48,7 +57,7 @@
         created(){
             blog.getDetail(this.$route.params.blogId).then(res=>{
                 [this.blogDetails]=[res.data];
-                this.avatar=res.data.user.avatar;
+                [this.user]=[res.data.user];
             });
 
 
@@ -83,12 +92,14 @@
         margin-left: 20px;
         p{
             font-size: 16px;
+
         }
         .updateAt{
             margin-top: 10px;
             font-size: 12px;
             color: $textLighterColor;
         }
+
     }
     .description{
         width: 70%;
@@ -104,6 +115,10 @@
         margin:auto ;
         text-align: left;
 
+    }
+    .userLink{
+        color: $bgColor;
+        margin-right: 2px;
     }
 
 </style>

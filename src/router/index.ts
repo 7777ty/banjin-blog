@@ -48,7 +48,8 @@ function loadView(view: string) {
     {
       path:'/users-blogs/:userId',
       name:'UsersBlogs',
-      component: loadView('UserBlogs')
+      meta:{requiresAuth:true},
+      component: loadView('UsersBlogs')
     },
     {
       path:'/my-blogs',
