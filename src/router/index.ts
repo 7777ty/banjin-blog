@@ -30,6 +30,7 @@ function loadView(view: string) {
     {
       path: '/details/:blogId',
       name:'Details',
+      meta:{requiresAuth:true},
       component:loadView('Details')
     },
     {

@@ -1,7 +1,7 @@
 <template>
     <div class="details">
         <Header2></Header2>
-        <div class="users">
+        <div class="user-info">
             <div class="usersTitle">
                 <span>头像</span>
                 <div class="title">
@@ -45,7 +45,7 @@
 </script>
 
 <style lang='scss' scoped>
-    .users{
+    .user-info{
         min-height: 500px;
         display: flex;
         flex-direction: column;

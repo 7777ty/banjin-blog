@@ -29,12 +29,13 @@
             this.$router.push('/login')
         }
         created(){
+            this.$store.dispatch('checkLogin');
             auth.getInfo().then(res=>{
                 this.avatar=res.data.avatar;
                 this.title=res.data.title;
                 this.username=res.data.username
             });
-            this.$store.dispatch('checkLogin')
+
         }
     }
 </script>
