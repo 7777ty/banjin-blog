@@ -34,7 +34,7 @@
     </div>
 </template>
 
-<script lang='ts'>
+<script >
     import Vue from 'vue';
     import {Component} from 'vue-property-decorator';
     import Header2 from '@/components/Header2.vue';
@@ -54,7 +54,7 @@
         }];
         user={};
         total=0;
-        page=1 as number;
+        page=1 ;
         isLogin=false;
 
 
@@ -67,7 +67,7 @@
             }
         }
 
-        onPageChange(newPage: string) {
+        onPageChange(newPage) {
             blog.getBlogsByUserId(this.$route.params.userId,{page:newPage}).then(res=>{
                 this.blogs = res.data;
                 this.total = res.total;
@@ -77,7 +77,7 @@
         }
 
         created(){
-            this.page =parseInt((this.$route.query.page)as string) ||1;
+            this.page =parseInt(this.$route.query.page) ||1;
             this.$store.dispatch('checkLogin').then(res=>{
                 this.isLogin=res;
             });

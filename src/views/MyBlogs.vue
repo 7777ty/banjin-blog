@@ -39,7 +39,7 @@
     </div>
 </template>
 
-<script lang='ts'>
+<script >
     import Vue from 'vue';
     import {Component} from 'vue-property-decorator';
     import Header2 from '@/components/Header2.vue';
@@ -59,11 +59,11 @@
         }];
         user=this.$store.getters.userInfo;
         total=0;
-        page=1 as number;
+        page=1 ;
         isLogin=false;
 
 
-        splitDate(dataStr: any){
+        splitDate(dataStr){
             const dateObj = typeof dataStr === 'object' ? dataStr : new Date(dataStr);
             return {
                 date: dateObj.getDate(),
@@ -71,19 +71,19 @@
                 year: dateObj.getFullYear()
             }
         }
-        async toDeleteBlog(id: any){
+        async toDeleteBlog(id){
             await this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
-            })
+            });
             await blog.deleteBlog({blogId:id});
             this.$message.success('删除成功');
-            this.blogs = this.blogs.filter(blog => blog.id != id);
+            this.blogs = this.blogs.filter(blog => blog.id !== id);
 
         }
-        onPageChange(newPage: string) {
-            blog.getBlogsByUserId(parseInt(this.user.id),{page:newPage}).then((res: any)=>{
+        onPageChange(newPage) {
+            blog.getBlogsByUserId(parseInt(this.user.id),{page:parseInt(newPage)}).then((res)=>{
                 this.blogs = res.data;
                 this.total = res.total;
                 this.page = res.page;
@@ -92,7 +92,7 @@
         }
 
         created(){
-            this.page =parseInt((this.$route.query.page)as string) ||1;
+            this.page =parseInt(this.$route.query.page) ||1;
             blog.getBlogsByUserId(this.user.id).then(res=>{
                 this.blogs=res.data;
                 this.total=res.total;

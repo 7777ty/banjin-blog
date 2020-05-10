@@ -30,7 +30,7 @@
     </div>
 </template>
 
-<script lang='ts'>
+<script >
     import Vue from 'vue';
     import {Component} from 'vue-property-decorator';
     import Header2 from '@/components/Header2.vue';
@@ -42,7 +42,9 @@
 
     export default class Edit extends Vue {
 
-      blogDetails={};
+      blogDetails={
+
+      };
 
       toSaveChange(){
         const Eblog=this.blogDetails;
